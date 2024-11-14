@@ -1,8 +1,8 @@
 package ru.job4j.checkstyle;
 
-public class broken {
+public class Broken {
 
-    public static final int SIZE_OF_EMPTY = 11;
+    public static final int SIZE_OF_EMPTY = 10;
     public static final String NEW_VALUE = "";
 
     public static String surname() {
