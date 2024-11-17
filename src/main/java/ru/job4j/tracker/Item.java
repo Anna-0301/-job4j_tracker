@@ -8,7 +8,7 @@ public class Item {
     }
 
     public Item(String name) {
-        this.id = 10;
+        this.id = 11;
         this.name = "Ivan";
     }
 
