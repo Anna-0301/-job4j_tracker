@@ -6,7 +6,7 @@ import static org.assertj.core.api.Assertions.offset;
 
 public class TriangleTest {
     @Test
-    public void when00and01and04Then1() {
+    public void when00and01and04Then11() {
         Point a = new Point(0, 0);
         Point b = new Point(0, 1);
         Point c = new Point(0, 4);
