@@ -4,8 +4,9 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class StartUI {
-    public void start() {
+    public static void main(String[] args) {
         Item item = new Item();
+        System.out.println("item: " + item);
         LocalDateTime itemCreated = item.getCreated();
         System.out.println("Текущие дата и время до форматирования: " + itemCreated);
 
