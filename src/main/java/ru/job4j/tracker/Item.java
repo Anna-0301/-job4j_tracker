@@ -24,9 +24,6 @@ public class Item {
         this.name = name;
     }
 
-    public Item(int i, String pop, Object o) {
-    }
-
     public int getId() {
         return id;
     }
