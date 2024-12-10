@@ -50,7 +50,7 @@ public class Item {
         return "Item{"
                 + "id=" + id
                 + ", name='" + name + '\''
-                + ", created=" + created
+                + ", created=" + created.format(FORMATTER)
                 + '}';
     }
 }
