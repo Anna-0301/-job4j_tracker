@@ -5,7 +5,7 @@ public class User {
     private boolean valid;
 
     public User(String username, boolean valid) {
-        this.username = username == null ? "" : username;
+        this.username = username;
         this.valid = valid;
     }
 
