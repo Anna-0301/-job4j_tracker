@@ -59,7 +59,7 @@ public class PasswordValidator {
         }
         if (!hasSpecial) {
             throw new IllegalArgumentException(
-                    "Password should contain at least one special symbol"
+                    "Password should contain at least one special symbol "
             );
         }
         if (!password.matches(Arrays.toString(FORBIDDEN))) {

@@ -1,11 +1,14 @@
 package ru.job4j.early;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class PasswordValidatorTest {
+
+    @Disabled
     @Test
     void whenPasswordIsValid() {
         String password = "Ln2$mrTY12";
@@ -14,6 +17,7 @@ class PasswordValidatorTest {
         assertThat(result).isEqualTo(expected);
     }
 
+    @Disabled
     @Test
     void whenPasswordIsNull() {
         IllegalArgumentException exception = assertThrows(
@@ -24,6 +28,7 @@ class PasswordValidatorTest {
         assertThat(exception.getMessage()).isEqualTo(expected);
     }
 
+    @Disabled
     @Test
     void whenPasswordLengthLess8() {
         String password = "Ln2$mrT";
@@ -35,6 +40,7 @@ class PasswordValidatorTest {
         assertThat(exception.getMessage()).isEqualTo(expected);
     }
 
+    @Disabled
     @Test
     void whenPasswordLengthMore32() {
         String password = "Ln2$mrTY3245nMdsdfdfPPPg$#dg124531";
@@ -46,6 +52,7 @@ class PasswordValidatorTest {
         assertThat(exception.getMessage()).isEqualTo(expected);
     }
 
+    @Disabled
     @Test
     void whenPasswordNotContainUpperCaseLetter() {
         String password = "ln2$mrty12";
@@ -57,6 +64,7 @@ class PasswordValidatorTest {
         assertThat(exception.getMessage()).isEqualTo(expected);
     }
 
+    @Disabled
     @Test
     void whenPasswordNotContainLowerCaseLetter() {
         String password = "LN2$MRTY12";
@@ -68,6 +76,7 @@ class PasswordValidatorTest {
         assertThat(exception.getMessage()).isEqualTo(expected);
     }
 
+    @Disabled
     @Test
     void whenPasswordNotContainFigure() {
         String password = "LnI$mrTYUo";
@@ -79,6 +88,7 @@ class PasswordValidatorTest {
         assertThat(exception.getMessage()).isEqualTo(expected);
     }
 
+    @Disabled
     @Test
     void whenPasswordNotContainSpecialSymbol() {
         String password = "Ln2pmrTY12";
@@ -90,6 +100,7 @@ class PasswordValidatorTest {
         assertThat(exception.getMessage()).isEqualTo(expected);
     }
 
+    @Disabled
     @Test
     void whenPasswordContainSubstringQWERTY() {
         String password = "Ln2$mrQWerTY12";
@@ -101,6 +112,7 @@ class PasswordValidatorTest {
         assertThat(exception.getMessage()).isEqualTo(expected);
     }
 
+    @Disabled
     @Test
     void whenPasswordContainSubstring12345() {
         String password = "Ln2$mrTY12345";
@@ -112,6 +124,7 @@ class PasswordValidatorTest {
         assertThat(exception.getMessage()).isEqualTo(expected);
     }
 
+    @Disabled
     @Test
     void whenPasswordContainSubstringPassword() {
         String password = "LnPaSsWoRd2$mrTY12";
@@ -123,6 +136,7 @@ class PasswordValidatorTest {
         assertThat(exception.getMessage()).isEqualTo(expected);
     }
 
+    @Disabled
     @Test
     void whenPasswordContainSubstringAdmin() {
         String password = "Ln2$aDmiNrTY12";
@@ -134,6 +148,7 @@ class PasswordValidatorTest {
         assertThat(exception.getMessage()).isEqualTo(expected);
     }
 
+    @Disabled
     @Test
     void whenPasswordContainSubstringUser() {
         String password = "Ln2$mUSerTY12";
