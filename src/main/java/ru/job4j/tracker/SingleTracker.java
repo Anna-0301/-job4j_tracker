@@ -4,7 +4,7 @@ public class SingleTracker {
 
     private static SingleTracker instance;
 
-    private Tracker tracker = new Tracker();
+    private final Tracker tracker = new Tracker();
 
     private SingleTracker() { }
 
@@ -29,10 +29,6 @@ public class SingleTracker {
 
     public Item findById(int id) {
         return tracker.findById(id);
-    }
-
-    public int indexOf(int id) {
-        return tracker.indexOf(id);
     }
 
     public boolean replace(int id, Item item) {
