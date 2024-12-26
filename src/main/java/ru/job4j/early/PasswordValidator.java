@@ -1,7 +1,5 @@
 package ru.job4j.early;
 
-import java.util.Arrays;
-
 public class PasswordValidator {
     private static final String[] FORBIDDEN = {"qwerty", "12345", "password", "admin", "user"};
 
@@ -22,24 +20,23 @@ public class PasswordValidator {
         boolean hasSpecial = false;
         for (char symbol : password.toCharArray()) {
             if (Character.isUpperCase(symbol)) {
-                throw new IllegalArgumentException(
-                        "Uppercase character"
-                );
+                hasUpCase = true;
             }
             if (Character.isLowerCase(symbol)) {
-                throw new IllegalArgumentException(
-                        "Lowercase character"
-                );
+                hasLowCase = true;
             }
             if (Character.isDigit(symbol)) {
-                throw new IllegalArgumentException(
-                        "Number"
-                );
+                hasDigit = true;
             }
             if (!Character.isLetterOrDigit(symbol)) {
-                throw new IllegalArgumentException(
-                        "Special character"
-                );
+                hasSpecial = true;
+            }
+
+            if (hasUpCase
+                && hasLowCase
+                    && hasDigit
+                        && hasSpecial) {
+                break;
             }
         }
         if (!hasUpCase) {
@@ -59,13 +56,15 @@ public class PasswordValidator {
         }
         if (!hasSpecial) {
             throw new IllegalArgumentException(
-                    "Password should contain at least one special symbol "
+                    "Password should contain at least one special symbol"
             );
         }
-        if (!password.matches(Arrays.toString(FORBIDDEN))) {
-            throw new IllegalArgumentException(
-                    "Password shouldn't contain substrings: qwerty, 12345, password, admin, user"
-            );
+        for (String search : FORBIDDEN) {
+            if (password.toLowerCase().contains(search)) {
+                throw new IllegalArgumentException(
+                        "Password shouldn't contain substrings: qwerty, 12345, password, admin, user"
+                );
+            }
         }
         return password;
     }
