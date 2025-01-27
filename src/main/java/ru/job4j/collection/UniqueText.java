@@ -1,23 +1,24 @@
 package ru.job4j.collection;
 
-import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 
 public class UniqueText {
 
     public boolean isEquals(String originText, String duplicateText) {
         boolean result = true;
         String[] origin = originText.split(" ");
-        String[] duplicate = duplicateText.split(" ");
+        String[] text = duplicateText.split(" ");
         HashSet<String> check = new HashSet<>();
         for (String string : origin) {
-            check.add(Arrays.toString(origin));
+            check.add(string);
+
         }
-        for (String string : duplicate) {
-            if (check.contains(Arrays.toString(duplicate))) {
-                return result;
+        for (String string : text) {
+            if (!check.contains(string)) {
+                return false;
             }
         }
-        return !result;
+        return result;
     }
 }
