@@ -35,8 +35,7 @@ public class AnalyzeByMap {
         List<Label> labels = new ArrayList<>();
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
-                tempMapAverage.put(subject.name(), subject.score()
-                        + (tempMapAverage.get(subject.name()) == null ? 0 : tempMapAverage.get(subject.name())));
+                tempMapAverage.put(subject.name(), subject.score() + tempMapAverage.getOrDefault(subject.name(), 0));
             }
         }
         for (String key : tempMapAverage.keySet()) {
@@ -46,16 +45,14 @@ public class AnalyzeByMap {
     }
 
     public static Label bestStudent(List<Pupil> pupils) {
-        Map<String, Integer> tempMapAverage = new LinkedHashMap<>();
+        double sumScore = 0;
         List<Label> labels = new ArrayList<>();
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
-                tempMapAverage.put(pupil.name(), subject.score()
-                        + (tempMapAverage.get(pupil.name()) == null ? 0 : tempMapAverage.get(pupil.name())));
+                sumScore += subject.score();
             }
-        }
-        for (String key : tempMapAverage.keySet()) {
-            labels.add(new Label(key, tempMapAverage.get(key)));
+            labels.add(new Label(pupil.name(), sumScore));
+            sumScore = 0;
         }
         Collections.sort(labels);
         return labels.get(labels.size() - 1);
@@ -66,8 +63,7 @@ public class AnalyzeByMap {
         List<Label> labels = new ArrayList<>();
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
-                tempMapAverage.put(subject.name(), subject.score()
-                        + (tempMapAverage.get(subject.name()) == null ? 0 : tempMapAverage.get(subject.name())));
+                tempMapAverage.put(subject.name(), subject.score() + tempMapAverage.getOrDefault(subject.name(), 0));
             }
             for (String key : tempMapAverage.keySet()) {
                 labels.add(new Label(key, tempMapAverage.get(key)));
