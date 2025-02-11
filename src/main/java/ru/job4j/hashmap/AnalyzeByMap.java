@@ -65,11 +65,11 @@ public class AnalyzeByMap {
             for (Subject subject : pupil.subjects()) {
                 tempMapAverage.put(subject.name(), subject.score() + tempMapAverage.getOrDefault(subject.name(), 0));
             }
-            for (String key : tempMapAverage.keySet()) {
-                labels.add(new Label(key, tempMapAverage.get(key)));
-            }
-            Collections.sort(labels);
         }
+        for (String key : tempMapAverage.keySet()) {
+            labels.add(new Label(key, tempMapAverage.get(key)));
+        }
+        Collections.sort(labels);
         return labels.get(labels.size() - 1);
     }
 }
