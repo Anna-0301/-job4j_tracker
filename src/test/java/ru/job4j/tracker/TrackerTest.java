@@ -62,7 +62,7 @@ public class TrackerTest {
         Tracker tracker = new Tracker();
         Item item = new Item(0, "Bug");
         tracker.add(item);
-        Item updateItem = new Item(0,"Bug with description");
+        Item updateItem = new Item(0, "Bug with description");
         tracker.replace(item.getId(), updateItem);
         assertThat(updateItem.getName()).isEqualTo("Bug with description");
     }
