@@ -9,7 +9,7 @@ public class BankService {
     private final Map<User, List<Account>> users = new HashMap<>();
 
     public void addUser(User user) {
-        users.putIfAbsent(user, users.get(user));
+        users.putIfAbsent(user, new ArrayList<>());
     }
 
     public void deleteUser(String passport) {
@@ -18,12 +18,11 @@ public class BankService {
 
     public void addAccount(String passport, Account account) {
         User user = findByPassport(passport);
-        List<Account> accounts = getAccounts(user);
         if (user != null) {
+            List<Account> accounts = getAccounts(user);
             if (!accounts.contains(account)) {
                 accounts.add(account);
             }
-            users.put(user, accounts);
         }
     }
 
@@ -38,8 +37,8 @@ public class BankService {
 
     public Account findByRequisite(String passport, String requisite) {
         User user = findByPassport(passport);
-        List<Account> accounts = getAccounts(user);
         if (user != null) {
+            List<Account> accounts = getAccounts(user);
             for (Account account : accounts) {
                 if (account.getRequisite().equals(requisite)) {
                     return account;
@@ -52,14 +51,11 @@ public class BankService {
     public boolean transferMoney(String sourcePassport, String sourceRequisite,
                                  String destinationPassport, String destinationRequisite,
                                  double amount) {
-        User user = findByPassport(sourcePassport);
         Account source = findByRequisite(sourcePassport, sourceRequisite);
         Account dest = findByRequisite(destinationPassport, destinationRequisite);
-        if (user != null
-                && sourcePassport.equals(destinationPassport)
-                    && source != null
-                        && dest != null
-                            && source.getBalance() >= amount) {
+        if (source != null
+                && dest != null
+                    && source.getBalance() >= amount) {
             source.setBalance(source.getBalance() - amount);
             dest.setBalance(dest.getBalance() + amount);
             return true;
@@ -68,6 +64,6 @@ public class BankService {
     }
 
     public List<Account> getAccounts(User user) {
-        return users.get(user) == null ? new ArrayList<>() : users.get(user);
+        return users.get(user);
     }
 }
