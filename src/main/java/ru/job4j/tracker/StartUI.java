@@ -32,10 +32,8 @@ public class StartUI {
 
     private void showMenu(List<UserAction> actions) {
         output.println("Меню:");
-        int menuId = 0;
         for (UserAction action : actions) {
-            output.println(menuId + ". " + action.name());
-            menuId++;
+            output.println(action.name());
         }
     }
 

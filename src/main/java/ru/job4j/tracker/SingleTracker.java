@@ -18,7 +18,7 @@ public class SingleTracker {
     }
 
     public Item add(Item item) {
-        return (Item) tracker.add(item);
+        return tracker.add(item);
     }
 
     public List<Item> findAll() {
@@ -30,7 +30,7 @@ public class SingleTracker {
     }
 
     public Item findById(int id) {
-        return (Item) tracker.findById(id);
+        return tracker.findById(id);
     }
 
     public boolean replace(int id, Item item) {

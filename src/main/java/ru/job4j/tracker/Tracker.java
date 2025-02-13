@@ -4,15 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Tracker {
+
+    private int ids = 1;
     private final List<Item> items = new ArrayList<>();
 
+
     public Item add(Item item) {
+        item.setId(ids++);
         items.add(item);
         return item;
     }
 
     public List<Item> findAll() {
-        return items;
+        return List.copyOf(items);
     }
 
     public List<Item> findByName(String key) {
@@ -34,8 +38,17 @@ public class Tracker {
         return null;
     }
 
+    public Item indexOf(int id) {
+        for (Item item : items) {
+            if (item.getId() == id) {
+                return item;
+            }
+        }
+        return null;
+    }
+
     public boolean replace(int id, Item item) {
-        if (item.getId() == id) {
+        if (indexOf(item.getId()) != null) {
             items.set(id, item);
             return true;
         }
@@ -43,6 +56,8 @@ public class Tracker {
     }
 
     public void delete(Item item) {
-        items.remove(item);
+        if(indexOf(item.getId()) != null) {
+            items.remove(item);
+        }
     }
 }
