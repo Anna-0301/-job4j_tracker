@@ -32,8 +32,7 @@ class StartUITest {
     void whenReplaceItem() {
         Output output = new StubOutput();
         Tracker tracker = new Tracker();
-        Item item = new Item("Replaced item");
-        tracker.add(item);
+        Item item = tracker.add(new Item("Replaced item"));
         String replacedName = "New item name";
         Input input = new MockInput(
                 new String[] {"0", String.valueOf(item.getId()), replacedName, "1"}
@@ -79,13 +78,13 @@ class StartUITest {
         String ln = System.lineSeparator();
         assertThat(output.toString()).isEqualTo(
                 "Меню:" + ln
-                        + "0. Изменить заявку" + ln
-                        + "1. Завершить программу" + ln
+                        + "Изменить заявку" + ln
+                        + "Завершить программу" + ln
                         + "=== Редактирование заявки ===" + ln
                         + "Заявка изменена успешно." + ln
                         + "Меню:" + ln
-                        + "0. Изменить заявку" + ln
-                        + "1. Завершить программу" + ln
+                        + "Изменить заявку" + ln
+                        + "Завершить программу" + ln
                         + "=== Завершение программы ===" + ln
         );
     }
@@ -102,10 +101,10 @@ class StartUITest {
         String ln = System.lineSeparator();
         assertThat(output.toString()).isEqualTo(
                 "Меню:" + ln
-                        + "0. Завершить программу" + ln
+                        + "Завершить программу" + ln
                         + "Неверный ввод, вы можете выбрать: 0 .. 0" + ln
                         + "Меню:" + ln
-                        + "0. Завершить программу" + ln
+                        + "Завершить программу" + ln
                         + "=== Завершение программы ===" + ln
         );
     }

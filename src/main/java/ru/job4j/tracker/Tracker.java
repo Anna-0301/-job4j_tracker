@@ -8,7 +8,6 @@ public class Tracker {
     private int ids = 1;
     private final List<Item> items = new ArrayList<>();
 
-
     public Item add(Item item) {
         item.setId(ids++);
         items.add(item);
@@ -48,15 +47,17 @@ public class Tracker {
     }
 
     public boolean replace(int id, Item item) {
-        if (indexOf(item.getId()) != null) {
-            items.set(id, item);
+        Item old = indexOf(id);
+        if (old != null) {
+            int idx = items.indexOf(old);
+            items.set(idx, item);
             return true;
         }
         return false;
     }
 
     public void delete(Item item) {
-        if(indexOf(item.getId()) != null) {
+        if (indexOf(item.getId()) != null) {
             items.remove(item);
         }
     }
