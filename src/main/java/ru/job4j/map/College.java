@@ -20,12 +20,11 @@ public class College {
     }
 
     public Optional<Subject> findBySubjectName(String account, String name) {
-        Optional<Student> student = findByAccount(account);
-        Optional<Subject> optional = Optional.empty();
-        return student.map(value -> students.get(value)
-                .stream()
-                .filter(subject -> subject.name().equals(name))
-                .findFirst())
-                .orElse(optional);
+        return findByAccount(account)
+                .flatMap(v -> students.get(v)
+                        .stream()
+                        .filter(s -> s.name().equals(name))
+                        .findFirst()
+                );
     }
 }
