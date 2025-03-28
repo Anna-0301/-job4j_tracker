@@ -1,9 +1,8 @@
 package ru.job4j.stream;
 
-import java.util.Comparator;
 import java.util.Objects;
 
-public class Student implements Comparator {
+public class Student {
     private int score;
 
     private String surname;
@@ -19,11 +18,6 @@ public class Student implements Comparator {
 
     public String getSurname() {
         return surname;
-    }
-
-    @Override
-    public int compare(Object o1, Object o2) {
-        return compare(o2, o1);
     }
 
     @Override
